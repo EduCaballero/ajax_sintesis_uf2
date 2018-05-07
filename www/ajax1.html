@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link href="js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <title>Síntesis - Eduardo Caballero</title>
+
+    <script>
+
+        function inicializar_XHR() {
+            if (window.XMLHttpRequest) {//con esto hacemos para utilizar una instancia de las de abajo, para saber cual
+                peticionHTTP = new XMLHttpRequest(); //esto nos va a permitir hacer una invocación a una página php usando método get o método post PERO esto sólo es compatible con navegadores modernos
+            } else {
+                peticionHTTP = new ActiveXObject("Microsoft.XMLHTTP");//este para los navegadores viejos
+            }
+        }
+
+        function realizarPeticion(url, metodo, funcion) {
+            //Definir una funcion de cómo actuar
+            peticionHTTP.onreadystatechange = funcion;
+            //Realizar la petición
+            peticionHTTP.open(metodo, url, true);
+            peticionHTTP.send(null);
+        }
+
+        function descargarArchivo() {
+            inicializar_XHR();
+            realizarPeticion('archivo.txt', 'GET', funcActuadora);
+        }
+
+        function funcActuadora(){
+            if (peticionHTTP.readyState == 4)
+                if (peticionHTTP.status == 200)
+                    document.write(peticionHTTP.responseText);
+        }
+
+        window.onload = descargarArchivo;
+
+    </script>
+
+</head>
+</head>
+<body>
+
+</body>
+</html>

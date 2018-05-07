@@ -1,0 +1,10 @@
+
+#imagesGroup {position:relative}
+
+#prev,
+#next {display:none;position:absolute;width:100%;top:0px;}
+
+#prev {right:100%;}
+#next {left:100%;}
+
+img {width:100%;}
