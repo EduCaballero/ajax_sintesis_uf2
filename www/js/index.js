@@ -137,14 +137,16 @@ function mostrarImagenes(event) {
         //data        : datosEnviados,
         dataType    : 'json',
         encode      : true
-    }).done(function (datos) {
+    }).done(function (arrayImagenes) {
         //especificar como actuar con los datos recibidos
-        if (datos.exito){
+        alert(arrayImagenes);
+
+        /*if (datos.exito){
             alert(datos.mensaje);
         } else {
             if (datos.errores.usuario) alert(datos.errores.usuario);
             if (datos.errores.contra) alert(datos.errores.contra);
-        }
+        }*/
     });
     event.preventDefault();
 }

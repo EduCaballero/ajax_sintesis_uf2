@@ -7,8 +7,8 @@
  */
 
 
-$errores = array();
-$datos = array();
+$arrayImagenes = array();
+$imagen;
 
 //Generando nuestra  respuesta:
 $con = mysqli_connect("localhost", "id5639494_sintesis", "sintesis", "id5639494_sintesis_uf2");
@@ -16,16 +16,14 @@ $con = mysqli_connect("localhost", "id5639494_sintesis", "sintesis", "id5639494_
 
 $result = mysqli_query($con, "SELECT url FROM foto");
 
-$datos['exito'] = true;
-$datos['mensaje'] = 'El registro de ha realizado correctamente';
-$datos['exito'] = false;
-$datos['errores'] = $errores;
-
-if (mysqli_num_rows($result) > 0) {
-
+while( $row = mysqli_fetch_array($result) ) {
+    //array_push($images['images'], array('id' => $row['id'], 'ruta' => $row['ruta'], 'photo' => base64_encode($row['photo'])));
+    //$arrayImagenes = $row['url'];
+    $imagen = $row['url'];
+    array_push($arrayImagenes, $imagen);
 }
-else echo "0";
 
 
+//header('Content-type: application/json');
 //Dar respuesta:
-echo json_encode($datos);
+echo json_encode($arrayImagenes);
