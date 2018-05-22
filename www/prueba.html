@@ -19,10 +19,13 @@
     <button id='boton1'>Trae fotos</button>
 </div>
 
+<div id="imageContainer"></div>
+
 
 
     <script>
 
+        var container = document.getElementById('imageContainer');
 
         $('#boton1').click(function(){
             $.ajax({
@@ -30,8 +33,13 @@
                 url: "http://educaballero.000webhostapp.com/getImagenes.php",
                 //data: { "codigo" :  "codigo" },
                 success: function(arrayImagenes){
-                    var aux = arrayImagenes;
+                    var imgs = arrayImagenes;
                     /*Failed to load http://educaballero.000webhostapp.com/getImagenes.php: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:63342' is therefore not allowed access.*/
+                    for (var i = 0, j = imgs.length; i < j; i++) {
+                        var img = document.createElement('img');
+                        img.src = imgs[i]; // img[i] refers to the current URL.
+                        container.appendChild(img);
+                    }
                 }
             });
         });

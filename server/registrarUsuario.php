@@ -26,6 +26,7 @@ if (empty($_POST['contra'])){
 if (empty($errores)){
 
     $con = mysqli_connect("localhost", "id5639494_sintesis", "sintesis", "id5639494_sintesis_uf2");
+    //$con = mysqli_connect("localhost", "id5842514_cordovaproject", "Parasintesis21101986", "id5842514_cordovaproject"); //por si falla el de arriba
     $result = mysqli_query($con, "INSERT usuario VALUES(null, '".$usuario."', '".$contrasenya."', null)");//de momento no uso el email hasta que pruebe autentificar con google
 
     $datos['exito'] = true;

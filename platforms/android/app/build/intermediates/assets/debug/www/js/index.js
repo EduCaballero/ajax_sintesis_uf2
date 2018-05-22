@@ -24,8 +24,6 @@ var app = {
                 destinationType: Camera.DestinationType.FILE_URI
             });
         });
-
-
     }
 };
 
@@ -130,10 +128,54 @@ function onFail(message) {
     alert('Fallo debido a: ' + message);
 }
 
-function mostrarImagenes() {
-    //https://www.lawebdelprogramador.com/codigo/JQuery/3529-Visualizador-de-imagenes-para-movil.html
-    //https://www.lawebdelprogramador.com/codigo/buscar.php?opc=1&id=340&charSearch=ajax
+
+function getImagesFromServer() {
+
+    var container = document.getElementById('imagesGroup');
+
+    //$('#imagenesSubidas').click(function(){
+        $.ajax({
+            type: "POST",
+            url: "http://educaballero.000webhostapp.com/getImagenes.php",
+            //data: { "codigo" :  "codigo" },
+            success: function(arrayImagenes){
+                var imgs = arrayImagenes;
+                /*Failed to load http://educaballero.000webhostapp.com/getImagenes.php: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:63342' is therefore not allowed access.*/
+                for (var i = 0, j = imgs.length; i < j; i++) {
+                    var img = document.createElement('img');
+                    img.src = imgs[i]; // img[i] refers to the current URL.
+                    container.appendChild(img);
+                    $('img').addClass('img-responsive');//añado una clase para que el bootstrap controle el css de la imagen
+                }
+            }
+        });
+    //});
+
 }
+
+
+
+
+/*function mostrarImagenes(event) {
+    $.ajax({
+        type        : 'POST',
+        url         : 'http://educaballero.000webhostapp.com/getImagenes.php',
+        //data        : datosEnviados,
+        dataType    : 'json',
+        encode      : true
+    }).done(function (arrayImagenes) {
+        //especificar como actuar con los datos recibidos
+        alert(arrayImagenes);
+
+        /*if (datos.exito){
+            alert(datos.mensaje);
+        } else {
+            if (datos.errores.usuario) alert(datos.errores.usuario);
+            if (datos.errores.contra) alert(datos.errores.contra);
+        }*/
+   /* });
+    event.preventDefault();
+}*/
 
 
 

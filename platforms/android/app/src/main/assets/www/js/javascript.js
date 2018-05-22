@@ -19,19 +19,19 @@ function updateImages(actual)
 		document.getElementById("next").dataset.imageName=data.next;
 		if(data.prev!="")
 		{
-			$("#prev").html("<img src='images/"+data.prev+"'>")
+			$("#prev").html("<img src='images/"+data.prev+"'>");
 		}else{
 			$("#prev").html("");
 		}
 		if(data.show!="")
 		{
-			$("#show").html("<img src='images/"+data.show+"'>")
+			$("#show").html("<img src='images/"+data.show+"'>");
 		}else{
 			$("#show").html("");
 		}
 		if(data.next!="")
 		{
-			$("#next").html("<img src='images/"+data.next+"'>")
+			$("#next").html("<img src='images/"+data.next+"'>");
 		}else{
 			$("#next").html("");
 		}

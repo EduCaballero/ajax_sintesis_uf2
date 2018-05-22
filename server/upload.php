@@ -19,6 +19,8 @@ $score = 0;
 
 /////meter imagen en bbdd
 $con = mysqli_connect("localhost", "id5639494_sintesis", "sintesis", "id5639494_sintesis_uf2");
+//$con = mysqli_connect("localhost", "id5842514_cordovaproject", "Parasintesis21101986", "id5842514_cordovaproject"); //por si falla el de arriba
+
 
 //traemos el id del usuario, porque me gusta complicarme
 $userIDbyName = mysqli_query($con, "SELECT id FROM usuario WHERE name ='".$usuario."'");
